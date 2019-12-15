@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class NotificationAction extends Action implements SessionAware {
-
     private HashMap<String, Object> serverAnswer;
+
     private ArrayList<String> notifications = new ArrayList<>();
     private ArrayList<String> newNotifications = new ArrayList<>();
 

@@ -445,7 +445,7 @@ public class MulticastServer {
             Connection connection = DriverManager.getConnection(databaseFilePath);
 
             //get connected urls
-            sql = "SELECT url, title, quote FROM page where url IN (SELECT page_url FROM page_page WHERE origin_url = ?);";
+            sql = "SELECT url, title, quote FROM page where url IN (SELECT origin_url FROM page_page WHERE page_url = ?);";
 
             statement = connection.prepareStatement(sql);
             statement.setString(1, pageURL);

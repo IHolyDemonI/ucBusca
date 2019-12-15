@@ -17,12 +17,4 @@ public class Action extends ActionSupport implements SessionAware {
     public String execute() throws Exception{
         return "success";
     }
-
-    public void printSession(){
-        for (String name: session.keySet()){
-            String key = name.toString();
-            String value = session.get(name).toString();
-            System.out.println(key + " -> " + value);
-        }
-    }
 }

@@ -13,27 +13,19 @@
 
 <div id="main">
     <c:choose>
-        <c:when test="${serverAnswer == null}">
-            A problem occurred during the search!
+        <c:when test="${!notifications.isEmpty()}">
+            <c:forEach items="${notifications}" var="item">
+                <c:out value="${item}" /> <br />
+            </c:forEach>
         </c:when>
-        <c:otherwise>
-            <c:choose>
-                <c:when test="${!notifications.isEmpty()}">
-                    <c:forEach items="${notifications}" var="item">
-                        <c:out value="${item}" /> <br />
-                    </c:forEach>
-                </c:when>
-            </c:choose>
-            <br />
-            <c:choose>
-                <c:when test="${!newNotifications.isEmpty()}">
-                    <c:forEach items="${newNotifications}" var="item">
-                        (new) <c:out value="${item}" /> <br />
-                    </c:forEach>
-                </c:when>
-            </c:choose>
-        </c:otherwise>
     </c:choose>
-
+    <br />
+    <c:choose>
+        <c:when test="${!newNotifications.isEmpty()}">
+            <c:forEach items="${newNotifications}" var="item">
+                (new) <c:out value="${item}" /> <br />
+            </c:forEach>
+        </c:when>
+    </c:choose>
 </div>
 </body>

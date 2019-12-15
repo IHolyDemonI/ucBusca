@@ -35,6 +35,7 @@
         <s:form action="IndexAction" method="post">
             Index a new URL<br>
             <s:textfield name="newURL"/>
+            <s:textfield type="number" name="level" min="1" max="7"/>
             <s:submit value="Index" name="index" class="button"/>
         </s:form>
     </div>
