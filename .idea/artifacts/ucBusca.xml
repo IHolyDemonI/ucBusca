@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ucBusca">
+    <output-path>$PROJECT_DIR$/out/artifacts/ucBusca</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ucBusca/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ucBusca" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="antlr-2.7.2" />
+          <element id="library" level="project" name="sqlite-jdbc-3.27.2.1" />
+          <element id="library" level="project" name="jsoup-1.12.1" />
+          <element id="library" level="project" name="jstl-1.2" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

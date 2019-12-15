@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="database.sqlite">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.15">
+    <root id="1">
+      <ServerVersion>3.25.1</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="notification"/>
+    <table id="7" parent="2" name="page"/>
+    <table id="8" parent="2" name="page_page"/>
+    <table id="9" parent="2" name="search_history"/>
+    <table id="10" parent="2" name="search_history_user"/>
+    <table id="11" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="12" parent="2" name="user"/>
+    <table id="13" parent="2" name="word"/>
+    <table id="14" parent="2" name="word_page"/>
+    <column id="15" parent="6" name="notification_id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="16" parent="6" name="message">
+      <Position>2</Position>
+      <DataType>VARCHAR(256)|0s</DataType>
+    </column>
+    <column id="17" parent="6" name="is_new">
+      <Position>3</Position>
+      <DataType>BOOL|0s</DataType>
+      <DefaultExpression>TRUE</DefaultExpression>
+    </column>
+    <column id="18" parent="6" name="user_username">
+      <Position>4</Position>
+      <DataType>VARCHAR(64)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="19" parent="6">
+      <ColNames>notification_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="20" parent="6">
+      <ColNames>user_username</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefColNames>username</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="21" parent="7" name="url">
+      <Position>1</Position>
+      <DataType>VARCHAR(1024)|0s</DataType>
+    </column>
+    <column id="22" parent="7" name="title">
+      <Position>2</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <column id="23" parent="7" name="quote">
+      <Position>3</Position>
+      <DataType>VARCHAR(1024)|0s</DataType>
+    </column>
+    <index id="24" parent="7" name="sqlite_autoindex_page_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>url</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="25" parent="7">
+      <ColNames>url</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_page_1</UnderlyingIndexName>
+    </key>
+    <column id="26" parent="8" name="origin_url">
+      <Position>1</Position>
+      <DataType>VARCHAR(1024)|0s</DataType>
+    </column>
+    <column id="27" parent="8" name="page_url">
+      <Position>2</Position>
+      <DataType>VARCHAR(1024)|0s</DataType>
+    </column>
+    <index id="28" parent="8" name="sqlite_autoindex_page_page_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>origin_url
+page_url</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="29" parent="8">
+      <ColNames>origin_url
+page_url</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_page_page_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="30" parent="8">
+      <ColNames>origin_url</ColNames>
+      <RefTableName>page</RefTableName>
+      <RefColNames>url</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="31" parent="8">
+      <ColNames>page_url</ColNames>
+      <RefTableName>page</RefTableName>
+      <RefColNames>url</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="32" parent="9" name="search">
+      <Position>1</Position>
+      <DataType>VARCHAR(512)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="9" name="times_searched">
+      <Position>2</Position>
+      <DataType>INTEGER|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <index id="34" parent="9" name="sqlite_autoindex_search_history_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>search</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="35" parent="9">
+      <ColNames>search</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_search_history_1</UnderlyingIndexName>
+    </key>
+    <column id="36" parent="10" name="search_history_search">
+      <Position>1</Position>
+      <DataType>VARCHAR(512)|0s</DataType>
+    </column>
+    <column id="37" parent="10" name="user_username">
+      <Position>2</Position>
+      <DataType>VARCHAR(64)|0s</DataType>
+    </column>
+    <foreign-key id="38" parent="10">
+      <ColNames>search_history_search</ColNames>
+      <RefTableName>search_history</RefTableName>
+      <RefColNames>search</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="39" parent="10">
+      <ColNames>user_username</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefColNames>username</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="40" parent="11" name="type">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="41" parent="11" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="42" parent="11" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="43" parent="11" name="rootpage">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="44" parent="11" name="sql">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="45" parent="12" name="username">
+      <Position>1</Position>
+      <DataType>VARCHAR(64)|0s</DataType>
+    </column>
+    <column id="46" parent="12" name="password">
+      <Position>2</Position>
+      <DataType>VARCHAR(64)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="12" name="is_admin">
+      <Position>3</Position>
+      <DataType>BOOL|0s</DataType>
+      <DefaultExpression>FALSE</DefaultExpression>
+    </column>
+    <index id="48" parent="12" name="sqlite_autoindex_user_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>username</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="49" parent="12">
+      <ColNames>username</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_user_1</UnderlyingIndexName>
+    </key>
+    <column id="50" parent="13" name="word">
+      <Position>1</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <index id="51" parent="13" name="sqlite_autoindex_word_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>word</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="52" parent="13">
+      <ColNames>word</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_word_1</UnderlyingIndexName>
+    </key>
+    <column id="53" parent="14" name="word_word">
+      <Position>1</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <column id="54" parent="14" name="page_url">
+      <Position>2</Position>
+      <DataType>VARCHAR(1024)|0s</DataType>
+    </column>
+    <index id="55" parent="14" name="sqlite_autoindex_word_page_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>word_word
+page_url</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="56" parent="14">
+      <ColNames>word_word
+page_url</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_word_page_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="57" parent="14">
+      <ColNames>word_word</ColNames>
+      <RefTableName>word</RefTableName>
+      <RefColNames>word</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="58" parent="14">
+      <ColNames>page_url</ColNames>
+      <RefTableName>page</RefTableName>
+      <RefColNames>url</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+  </database-model>
+</dataSource>
