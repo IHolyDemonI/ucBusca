@@ -51,7 +51,7 @@
         </action>
 
         <action name="NotificationAction" class="Actions.NotificationAction" method="execute">
-            <result>/WEB-INF/notifications.jsp</result>
+            <result name="success">/WEB-INF/notifications.jsp</result>
             <result name="error"> WEB-INF/error.jsp </result>
         </action>
 

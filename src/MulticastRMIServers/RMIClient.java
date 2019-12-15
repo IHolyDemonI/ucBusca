@@ -278,7 +278,6 @@ public class RMIClient implements CallBack, Serializable {
             else {
                 newNotifications = (ArrayList<String>) serverResponse.get("NewNotifications");
                 notifications = (ArrayList<String>) serverResponse.get("Notifications");
-
                 for (String temp : newNotifications){
                     System.out.println("(new)" + temp);
                 }

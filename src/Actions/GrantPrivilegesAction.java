@@ -16,8 +16,6 @@ public class GrantPrivilegesAction extends Action implements SessionAware {
 
         this.getGrantPrivilegesBean().setTargetUser(targetUser);
 
-        printSession();
-
         serverAnswer = getGrantPrivilegesBean().grantPrivileges();
 
         if (serverAnswer == null || serverAnswer.containsKey("Error"))
