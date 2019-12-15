@@ -46,8 +46,9 @@
         </action>
 
         <action name="SearchHistoryAction" class="Actions.SearchHistoryAction" method="execute">
-            <result>/WEB-INF/searchHistoryResult.jsp</result>
+            <result name="success">/WEB-INF/searchHistoryResult.jsp</result>
             <result name="error"> WEB-INF/error.jsp </result>
+            <result name="login"> WEB-INF/login.jsp </result>
         </action>
 
         <action name="NotificationAction" class="Actions.NotificationAction" method="execute">
